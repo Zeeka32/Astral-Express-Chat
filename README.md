@@ -1,6 +1,6 @@
 # Astral Express Chat - Project 5
 Astral Express Chat is a simple chatting application like Discord or Messenger built using the Python web-framework Django for CS50W's final Project Capstone.
-
+Link to Certificate: https://certificates.cs50.io/e3d5595b-246d-4b79-8b2b-e24bcb51a77a
 ## Features
 - Adding Friends
 - Removing Friends
