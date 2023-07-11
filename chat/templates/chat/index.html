@@ -1,0 +1,131 @@
+{% extends "chat/layout.html" %}
+{%load static %}
+
+{% block body %}
+    {% csrf_token %}
+    {%if user.is_authenticated %}
+        <div class="nav-container">
+            <div class="nav-friends-container hide">
+                <div class="friends-title"> Friends </div>
+                <div class="friends-container">
+                    {% for friend in friends %}
+                        {% if friend.id == active_user.id %}
+                            <button class="selected" id="friend-{{friend.id}}" data-friend-id={{friend.id}}>
+                                <div class="friend-name">{{friend.username}}</div>
+                                <div class="close">&#x2715</div>
+                            </button>
+                        {% else %}
+                            <button class="friend" id="friend-{{friend.id}}" data-friend-id={{friend.id}}>
+                                <div class="friend-name">{{friend.username}}</div>
+                                <div class="close">&#x2715</div>
+                            </button>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="main-chat-container">
+                <div class="nav-chat-info">
+                    <div class="nav-person" id="friend-data" data-friend-id="{{active_user.id}}">
+                        <div id="options-button">
+                            <div class="more-options"></div>
+                            <div class="more-options"></div>
+                            <div class="more-options"></div>
+                        </div>
+                        <div style="margin-left:15px">{{active_user.username}}</div>
+                    </div>
+                    <div class="nav-logout">
+                        <div id="username" data-user-id="{{user.id}}" class="profile-btn">{{user.username}}</div>
+                        <div class="profile-btn">
+                            <a href="{% url 'index' %}" id="index">
+                                {% if requests_count %}
+                                    <div class="requests-number">{{requests_count}}</div>
+                                    {% else %}
+                                    <div class="requests-number hide-requests">{{requests_count}}</div>
+                                {% endif %}
+                                <i class="fa-regular fa-envelope"></i>
+                            </a>
+                        </div>
+                        <div class="logout-btn">
+                            <a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                {% comment %} handled with web socket {% endcomment %}
+                {% if active_user %}
+                    <div class="message-container">
+                        {% for message in messages %}
+                        <div class="message" id="message-{{message.id}}">
+                            <div class="message-sender">
+                                <div>{{message.sender}}</div>
+                                <div class="text-muted message-time">{{message.timestamp}}</div>
+                            </div>
+                            <div class="message-content">
+                                <div id="message-{{message.id}}-content" class="message-content-text">{{message.content}}</div>
+                                {% if message.sender == user %}
+                                <div class="message-actions">
+                                    <button class="edit-button btn btn-primary fa-solid fa-pen" data-message-id={{message.id}}></button>
+                                    <button class="delete-btn btn btn-primary fa-solid fa-trash-can" data-message-id={{message.id}}></button>
+                                    <button class="fa-solid fa-check save-btn btn btn-primary" data-message-id={{message.id}}></button>
+                                    <button class="cancel-btn btn btn-primary fa-solid fa-xmark" data-message-id={{message.id}}></button>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="chat-box">
+                        <input type="text" class="chat-input" placeholder="Message {{active_user.username}}" id="chat-input-textbox" autocomplete="off" style="margin-right:10px"/>
+                        <button id="send-btn" class="btn btn-primary fa-solid fa-paper-plane" style="margin-right:15px"></button>
+                    </div>
+                {% else %}
+                        {% csrf_token %}
+                        <div>
+                            <label for="friend-request-input" class="form-label heading">Add Friend</label>
+                        </div>
+                        <div class="add-friends-container">
+                            <div class="chat-box" style="width: 92%">
+                                <input type="text" name="receiverUsername" class="chat-input" id="friend-request-input" aria-describedby="emailHelp" style="width:100%">
+                            </div>
+                            <div class="chat-box" style="margin: 0 10px 0 10px">
+                                <button type="submit" id="request-send" class="btn btn-primary" style="white-space: nowrap;">Add Friend</button>
+                            </div>
+                        </div>
+                    <div class="request-container">
+                        {% if message == "Friend request sent!" %}
+                        <div class="centered">
+                            <div class="alert alert-success centered" style="width:80%" role="alert">
+                                {{message}}
+                            </div>
+                        </div>
+                        {% elif message %}
+                        <div class="centered">
+                            <div class="alert alert-danger centered" style="width:80%" role="alert">
+                                {{message}}
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="heading">Incoming Requests</div>
+                        {% for request in requests %}
+                            <div class="request-item" id="request-{{request.sender.id}}">
+                                <div style="width:98%; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; max-width: 98%">{{request.sender}}</div>
+                                <div style="white-space:nowrap; margin-right: 15px">
+                                    <button class="btn btn-primary btn-accept fa-solid fa-check" data-user-id="{{request.sender.id}}"></button>
+                                    <button class="btn btn-danger btn-reject fa-solid fa-xmark" data-user-id="{{request.sender.id}}"></button>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <div style="display:flex; align-items:center; justify-content:center">
+                                <div>No incoming requests</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <script src="{% static 'chat/notifications.js' %}?{% now 'U' %}"></script>
+        {% if active_user %}
+            <script src="{% static 'chat/chat.js' %}?{% now 'U' %}"></script>
+        {% endif %}
+    {% endif %}
+{% endblock %}

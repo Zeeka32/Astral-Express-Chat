@@ -1,0 +1,25 @@
+{% extends "chat/layout.html" %}
+
+{% block body %}
+<div class="account-main-container">
+    <div class="container">
+        <form class="form-1" action="{% url 'login' %}" method="post">
+            {% csrf_token %}    
+            {% if message %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endif %}
+            <h1>Login</h1>
+            <label class="account-label" for="username">Username</label>
+            <input type="text" name="username" id="username" required class="account-input"/>
+            <label class="account-label" for="password">Password</label>
+            <input type="password" name="password" id="password" required class="account-input" />
+            <button class="account-button">Login</button>
+
+            <!-- .........///sign-up///.......... -->
+            <p class="account-p"> Don't have an account? <a href="{% url 'register' %}">Register here.</a> </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

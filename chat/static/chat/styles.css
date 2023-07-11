@@ -1,0 +1,540 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #212336 #121425;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #121425;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #212336;
+}
+
+.account-main-container {
+    height: 100vh;
+    background-color: #121425;
+}
+
+.container {
+    height: 90vh;
+    margin: 0 auto;
+    position: relative;
+}
+
+.container .form-1 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    width: 40%;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+}
+
+.form-1 h1 {
+    text-align: center;
+    margin-top: 0.7rem;
+    margin-bottom: 1.5rem;
+}
+
+.account-input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid;
+    background: none;
+    margin: 0.9rem 2rem;
+    font-size: 1rem;
+}
+
+.account-label {
+    margin: 0 2rem;
+}
+
+.account-button {
+    margin: 2rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 1rem;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: bolder;
+    color: #fff;
+    background: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+}
+
+.account-p {
+    text-align: center;
+    font-weight: bolder;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    margin-top: 0.5rem;
+}
+
+.icons a {
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 0.2rem;
+}
+
+.icons .fa-facebook-f {
+    border-radius: 50%;
+    background: #5d75ab;
+    color: #fff;
+    padding: 1rem;
+}
+
+.icons .fa-twitter {
+    border-radius: 50%;
+    background: #1da1f2;
+    color: white;
+    padding: 1rem;
+}
+
+.icons .fa-google {
+    border-radius: 50%;
+    background: #ee5645;
+    color: #fff;
+    padding: 1rem;
+}
+
+.nav-container {
+    display: flex;
+    font-size: 1.5rem;
+}
+
+
+/* chat css */
+.main-chat-container {
+    width: 100%;
+    background-color: #0f1019;
+    color: #ebe7e4;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.nav-chat-info {
+    display: flex;
+    justify-content: space-between;
+    background-color: #121425;
+}
+
+.message-container {
+    height: 87vh;
+    overflow: auto;
+}
+
+.chat-input {
+    width: 97%;
+    margin-left: 10px;
+    background: linear-gradient(to left top, black, #121425);
+    border: solid;
+    color: white;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.delete-btn {
+    color: rgb(249, 0, 0);
+    background: #3e3e52;
+    border: #3e3e52;
+}
+
+.delete-btn:hover {
+    color: red;
+}
+
+.edit-button {
+    color: #1da1f2;
+    background: #3e3e52;
+    border: #3e3e52;
+}
+
+.save-btn {
+    display: none !important;
+    background: green;
+    border: #3e3e52;
+}
+
+#send-btn {
+    background: #3e3e52;
+    border: #3e3e52;
+}
+
+#send-btn:hover {
+    background: #68687f;
+}
+
+.save-btn:hover {
+    background: rgb(9, 186, 9)
+}
+
+.btn-accept {
+    background: green;
+    border: #3e3e52;
+}
+
+.btn-accept:hover {
+    background: rgb(9, 186, 9)
+}
+
+.cancel-btn {
+    display: none !important;
+    background: rgb(130, 0, 0);
+    border: #3e3e52;
+}
+
+.cancel-btn:hover {
+    background: rgb(255, 0, 0)
+}
+
+.message-content-text {
+    width: 98%;
+    white-space: pre-line;
+}
+
+.message-sender {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message:hover {
+    background-color: #212336;
+}
+
+.message {
+    padding: 0 25px 15px 25px;
+}
+
+.message-time {
+    font-size: 1rem;
+}
+
+.message-content {
+    display: flex;
+    /* align-items: center; */
+    font-size: 1.2rem;
+}
+
+.message-actions > button {
+    font-size: 0.8rem;
+}
+
+.message-actions {
+    white-space: nowrap;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+.chat-box {
+    display: flex;
+}
+
+.chat-input:focus {
+    outline: none;
+}
+
+.nav-person {
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-btn {
+    margin-right: 10px;
+}
+
+.logout-btn {
+    margin-right: 10px;
+}
+
+.nav-logout {
+    display: flex;
+}
+
+.nav-logout > div {
+    padding-right: 20px;
+}
+
+.more-options {
+    width: 35px;
+    height: 5px;
+    background-color: white;
+    margin: 6px 0;
+    padding-left: 15px;
+}
+
+#options-button {
+    display: none;
+}
+
+#options-button:hover {
+    cursor: pointer;
+}
+
+/* friends list css */
+
+@keyframes showElement {
+    0% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+.nav-friends-container {
+    background-color: #121425;
+    color: #839292;
+    min-width: 30vh;
+}
+
+.show {
+    animation-name: showElement;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    display: block;
+}
+
+.friends-container {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    font-size: 1.3rem;
+}
+
+.friend {
+    padding-left: 5px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: none;
+    background-color: #121425;
+    color: #839292;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 15px 15px 10px;
+}
+
+.requests-number {
+background-color: #fa3e3e;
+  border-radius: 2px;
+  color: white;
+ 
+  padding: 1px 3px;
+  font-size: 11px;
+  
+  position: absolute; /* Position the badge within the relatively positioned button */
+  top: 5px;
+  right: 80px;
+}
+
+.hide-requests {
+    display: none;
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.friend:hover {
+    background-color: #212336;
+    color: #ebe7e4;
+}
+
+.friends-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selected {
+    padding-left: 5px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: none;
+    background-color: #0f1019;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 15px 15px 10px;
+}
+
+.heading {
+    padding-left: 15px;
+}
+
+.selected:hover {
+    background-color: #212336;
+}
+
+.notification {
+    color: white;
+    background-color: #541414;
+}
+
+/* add friend page css */
+
+.add-friends-container {
+    display: flex;
+}
+
+.request-container {
+    margin: 25px 0px 0px 0px;
+    height: 80vh;
+    overflow: auto;
+}
+
+.request-item {
+    border: none;
+    display: flex;
+    width: 100%;
+    background-color: #0f1019;
+    color:#839292;
+    padding: 5px 0px 9px 45px;
+}
+
+.request-item:hover {
+    color: white;
+    background-color:#212336;
+}
+
+/* remove friend css */
+.close {
+    filter: brightness(75%);
+    color: white;
+}
+
+.close:hover {
+    filter: brightness(100%);
+    color: white;
+}
+
+/* ....///Media query///..... */
+
+@media (max-width: 501px) {
+    html {
+        font-size: 15px;
+    }
+
+    .container .form-1 {
+        width: 300px;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .low-profile {
+        filter: brightness(25%);
+    }
+
+    #options-button {
+        display: block;
+    }
+
+    .nav-friends-container {
+        min-width: 45vh;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+
+    .container .form-1 {
+        width: 450px;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    #options-button {
+        display: block;
+    }
+
+    .low-profile {
+        filter: brightness(25%);
+    }
+
+    .nav-friends-container {
+        min-width: 45vh;
+    }
+}
+
+@media (min-width: 765px) and (max-width: 1200px) {
+    html {
+        font-size: 18px;
+    }
+
+    .container .form-1 {
+        width: 540px;
+        height: 550px;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 671px) {
+    .container {
+        height: 100vmax;
+    }
+    html {
+        font-size: 18px;
+    }
+
+    .message-container {
+        height: 84vh;
+    }
+
+}
+
+@media (orientation: landscape) and (max-height: 548px) {
+
+    .message-container {
+        height: 80vh;
+    }
+
+    .container {
+        height: 80vmax;
+    }
+
+}
+
+@media (orientation: landscape) and (max-height: 487px) {
+
+    .message-container {
+        height: 77vh;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 377px) {
+
+    .message-container {
+        height: 72vh;
+    }
+}
